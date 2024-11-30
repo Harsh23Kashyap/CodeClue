@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Helper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="api-key-container" style="display: none; text-align: center; padding: 20px;">
+        <h1 style="font-size: 20px; margin-bottom: 10px;">Enter Your API Keys</h1>
+        <p style="font-size: 14px; margin-bottom: 20px; color: #cccccc;">
+            Please enter your OpenAI and/or Gemini API key(s) to get started:
+        </p>
+
+        <!-- OpenAI API Key Input -->
+        <div style="margin-bottom: 20px;">
+            <label for="openai-api-key" style="display: block; font-size: 14px; margin-bottom: 5px; color: #ffffff;">
+                OpenAI API Key:
+            </label>
+            <input 
+                type="text" 
+                id="openai-api-key" 
+                placeholder="Enter OpenAI API Key" 
+                style="
+                    width: 80%; 
+                    padding: 10px; 
+                    font-size: 14px; 
+                    border: 1px solid #374151; 
+                    border-radius: 8px; 
+                    background-color: #1f2937; 
+                    color: #ffffff; 
+                    text-align: center;"
+            />
+        </div>
+
+        <!-- Gemini API Key Input -->
+        <div style="margin-bottom: 20px;">
+            <label for="gemini-api-key" style="display: block; font-size: 14px; margin-bottom: 5px; color: #ffffff;">
+                Gemini API Key:
+            </label>
+            <input 
+                type="text" 
+                id="gemini-api-key" 
+                placeholder="Enter Gemini API Key" 
+                style="
+                    width: 80%; 
+                    padding: 10px; 
+                    font-size: 14px; 
+                    border: 1px solid #374151; 
+                    border-radius: 8px; 
+                    background-color: #1f2937; 
+                    color: #ffffff; 
+                    text-align: center;"
+            />
+        </div>
+
+        <!-- Buttons -->
+        <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
+            <button 
+                id="save-api-keys" 
+                class="leetcode-button dark-mode" 
+                style="
+                    padding: 10px 20px; 
+                    font-size: 14px; 
+                    background-color: #374151;">
+                Save API Keys
+            </button>
+            <button 
+                id="ignore-api-keys" 
+                class="leetcode-button dark-mode" 
+                style="
+                    padding: 10px 20px; 
+                    font-size: 14px; 
+                    background-color: #6b7280;">
+                Ignore and Continue
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Functionality Section -->
+    <div id="main-container" style="display: none;">
+        <h1 id="problem-title">Loading...</h1>
+        <div id="loading-container" class="loading">
+            <p>
+                Fetching Hints <span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+            </p>
+        </div>
+        <div id="hint-container" style="display: none; margin: 20px auto; text-align: center;">
+            <a href="#" id="show-hint" class="leetcode-button dark-mode">
+                <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="icon">
+                        <path fill-rule="evenodd" d="M11 3a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H5a1 1 0 010-2h6V4a1 1 0 011-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    Show Hint
+                </div>
+            </a>
+            <div id="hint-box" style="display: none; margin-top: 20px;">
+                <p id="hint" style="margin: 0; padding: 20px; border-radius: 8px; text-align: left;"></p>
+            </div>
+        </div>
+        
+            <p id="hint" style="display: none;"></p>
+            <div class="navigation-buttons" style="display: none;">
+                <a href="#" id="prev-hint" class="leetcode-button dark-mode" style="display: none;">
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="icon">
+                            <path fill-rule="evenodd" d="M15.707 5.293a1 1 0 010 1.414L10.414 12l5.293 5.293a1 1 0 01-1.414 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        Previous Hint
+                    </div>
+                </a>
+                <a href="#" id="next-hint" class="leetcode-button dark-mode">
+                    <div class="flex">
+                        Next Hint
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="icon">
+                            <path d="M9.293 4.707a1 1 0 011.414-1.414l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 12 9.293 6.707z" />
+                        </svg>
+                    </div>
+                </a>
+                
+            </div>
+            <div id="algorithm-container" style="display: none; text-align: center;">
+                <a href="#" id="reveal-algorithm" class="leetcode-button dark-mode">
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="icon">
+                            <path fill-rule="evenodd" d="M5.828 1.793a1 1 0 011.415 0L10.45 5h8.05a1 1 0 011 1v2.895a3.502 3.502 0 010 6.71V18.5a1 1 0 01-1 1H10V21a1 1 0 01-1 1H4a1 1 0 01-1-1v-5a1 1 0 011-1h5a1 1 0 011 1v1.5h7.5v-1.895a3.502 3.502 0 010-6.71V7h-6.98l-3.277 3.278a1 1 0 01-1.415 0L2.293 6.743a1 1 0 010-1.415l3.535-3.535z" clip-rule="evenodd"></path>
+                        </svg>
+                        Reveal Algorithm
+                    </div>
+                </a>
+                <p id="algorithm" style="display: none; margin-top: 10px;"></p>
+
+                <a href="#" id="reveal-time-complexity" class="leetcode-button dark-mode" style="margin-top: 10px;">
+                    <div class="flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" class="icon">
+                            <path fill-rule="evenodd" d="M12 2a10 10 0 11-6.243 17.602.75.75 0 111.034-1.087A8.5 8.5 0 1020.5 12H18a.75.75 0 010-1.5h3a.75.75 0 01.75.75v3a.75.75 0 01-1.5 0v-1.527A9.975 9.975 0 0112 22C6.477 22 2 17.523 2 12S6.477 2 12 2zm.47 5.97a.75.75 0 01.053 1.06L9.56 12l2.964 2.97a.75.75 0 01-1.054 1.065l-3.5-3.5a.75.75 0 010-1.065l3.5-3.5a.75.75 0 011.06-.053z" clip-rule="evenodd"></path>
+                        </svg>
+                        Show Time Complexity
+                    </div>
+                </a>
+                <p id="time-complexity" style="display: none; margin-top: 10px;"></p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

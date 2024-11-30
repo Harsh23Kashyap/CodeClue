@@ -1,0 +1,172 @@
+body {
+    background-color: #000000;  
+    color: #ffffff; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    width: 350px; 
+    height: 300px; 
+}
+
+/* Popup Container */
+#popup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Loading Animation */
+#loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading p {
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    animation: bounce 1.5s infinite;
+}
+
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Hint and Navigation Containers */
+#hint-container {
+    margin-top: 10px;
+    flex-grow: 1;
+    display: none;
+    text-align: center;
+}
+
+#hint {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#time-complexity {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffffff; /* White text for the complexity explanation */
+}
+
+.leetcode-button {
+    display: inline-flex; /* Flex for proper alignment */
+    align-items: center; /* Center icon and text */
+    justify-content: center; /* Center content horizontally */
+    text-decoration: none;
+    border-radius: 9999px; /* Pill-shaped button */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #ffffff; /* White text */
+    background-color: #1f2937; /* Dark gray background */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    border: 1px solid #374151; /* Subtle border */
+}
+
+.leetcode-button:hover {
+    background-color: #374151; /* Slightly lighter on hover */
+    color: #ffffff;
+}
+
+.leetcode-button .icon {
+    margin-right: 8px;
+    height: 20px;
+    width: 20px;
+    flex-shrink: 0; /* Prevent icon resizing */
+    vertical-align: middle;
+    color: inherit; /* Match text color */
+}
+
+
+/* Flex alignment for consistent icon-text placement */
+.flex {
+    display: flex;
+    align-items: center; /* Perfectly align icon and text vertically */
+    justify-content: center;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    justify-content: center; /* Center navigation buttons */
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px; /* Add space above navigation buttons */
+}
+
+
+.leetcode-button.dark-mode .icon {
+    color: #ffffff; /* White icon for dark mode */
+}
+
+/* Problem Title */
+#problem-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Algorithm Reveal */
+#algorithm-container {
+    margin-top: 10px;
+    font-size: 14px;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#algorithm {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffffff; /* White text for algorithm */
+}
+
+#hint-box {
+    background-color: #374151; 
+    border: 2px solid #6b7280;  
+    border-radius: 8px;  
+    padding: 25px0px;  
+    max-width: 80%; 
+    margin: 0 auto; 
+    color: #ffffff; 
+    text-align: left; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#hint-box p {
+    font-size: 14px; 
+    line-height: 1.6; 
+}
