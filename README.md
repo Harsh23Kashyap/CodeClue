@@ -1,6 +1,6 @@
-# LeetCode Hint Helper
+# LeetCode Hint Helper - Code Clue
 
-**LeetCode Hint Helper** is a powerful Chrome extension designed to enhance your problem-solving experience on LeetCode. With step-by-step hints, algorithm insights, and time complexity analysis, this extension simplifies even the toughest coding challenges.
+**Code Clue** is a powerful Chrome extension designed to enhance your problem-solving experience on LeetCode. With step-by-step hints, algorithm insights, and time complexity analysis, this extension simplifies even the toughest coding challenges.
 
 ---
 
@@ -57,7 +57,7 @@ Below is a video demonstration followed by screenshots:
 
 ### **From Chrome Web Store**
 1. Go to the **Chrome Web Store**.
-2. Search for **LeetCode Hint Helper**.
+2. Search for **CodeClue**. (Soon to be available on Chrome Web Store)
 3. Click on **Add to Chrome**.
 4. Confirm by clicking **Add Extension**.
 5. Open a LeetCode problem, and the extension will be ready to use!
