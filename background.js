@@ -52,7 +52,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 // Fetch hints from the backend (OpenAI/Gemini API)
 async function fetchHints(prompt) {
     const { openaiApiKey, geminiApiKey } = await chrome.storage.local.get(["openaiApiKey", "geminiApiKey"]);
-    const adminGeminiApiKey = "AIzaSyC7GcmQ9JEovyzln2pAURDFdrct9nZ52sY"; // Admin key
+    const adminGeminiApiKey = ""; // Admin key
 
     try {
         if (openaiApiKey) {
