@@ -35,7 +35,7 @@
 Below is a video demonstration followed by screenshots:
 
 ### **Video Walkthrough**
-![Video Walkthrough](Screenshots/5.mp4)
+[![Watch the video](Screenshots/CodeClue.png)](Screenshots/5.mp4)
 
 ---
 
