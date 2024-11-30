@@ -27,27 +27,38 @@ function monitorUrlChange() {
 
 // Start monitoring URL changes
 monitorUrlChange();
-
 function extractProblemTitle() {
-    const titleElement = document.querySelector('div[data-cy="question-title"]');
+    // Selector for the newer version of LeetCode
+    const newTitleElement = document.querySelector(
+        'a.no-underline.hover\\:text-blue-s.dark\\:hover\\:text-dark-blue-s.truncate.cursor-text.whitespace-normal'
+    );
 
-    if (titleElement) {
-        const fullText = titleElement.innerText.trim();
+    // Selector for the older version of LeetCode
+    const oldTitleElement = document.querySelector('div[data-cy="question-title"]');
+
+    let problemTitle = null;
+
+    if (newTitleElement) {
+        // Extract the title for the newer version
+        const fullText = newTitleElement.innerText.trim();
+        const titleMatch = fullText.match(/^\d+\.\s.+/); // Matches "3319. Problem Title"
+        problemTitle = titleMatch ? titleMatch[0] : null;
+    } else if (oldTitleElement) {
+        // Extract the title for the older version
+        const fullText = oldTitleElement.innerText.trim();
         const titleMatch = fullText.match(/^\d+\.\s.+/); // Matches "1234. Problem Title"
+        problemTitle = titleMatch ? titleMatch[0] : null;
+    }
 
-        if (titleMatch) {
-            const problemTitle = titleMatch[0];
-            console.log("Extracted Problem Title:", problemTitle); // Debug log
+    if (problemTitle) {
+        console.log("Extracted Problem Title:", problemTitle);
 
-            // Send the title to the background script
-            chrome.runtime.sendMessage({ type: "leetcodeProblemTitle", problemTitle }, () => {
-                console.log("Problem Title Sent:", problemTitle); // Debug log
-            });
-        } else {
-            console.error("Problem Title Format Not Matched:", fullText);
-        }
+        // Send the title to the background script
+        chrome.runtime.sendMessage({ type: "leetcodeProblemTitle", problemTitle }, () => {
+            console.log("Problem Title Sent:", problemTitle);
+        });
     } else {
-        console.error("Problem Title Element Not Found");
+        console.error("Problem Title not found or format not matched.");
     }
 }
 
